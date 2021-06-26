@@ -5,10 +5,23 @@
 # sendo que nesses casos Fevereiro terá 29 dias.
 
 
-def formatacao(data):
-    dia = data[:2]
+import datetime
+
+def check_date(day, month, year):
+    correctDate = None
+    try:
+        newDate = datetime.datetime(year, month, day)
+        correctDate = True
+    except ValueError:
+        correctDate = False
+    return correctDate
+
+
+def formatacao(dia, mes, ano):
+    dia = int(data[:2])
     mes = int(data[3:5])
-    ano = data[6:]
+    ano = int(data[6:])
+
     calendario = dict()
     
     calendario["1"] = "Janeiro"
@@ -32,7 +45,16 @@ def formatacao(data):
 
 
 
-data = "31/12/1998"
+data = input("Informe a data")
 
-dataEscrita = formatacao(data)
-print(dataEscrita)
+dia = int(data[:2])
+mes = int(data[3:5])
+ano = int(data[6:])
+
+correctdate = check_date(dia, mes, ano)
+
+if correctdate:
+    dataEscrita = formatacao(dia,mes, ano)
+    print(dataEscrita)
+else:
+    print("Data incorreta!")
