@@ -21,4 +21,6 @@ for i in range(vidas):
     print()
     print(secreta)
     print()        
+    
+    
 
